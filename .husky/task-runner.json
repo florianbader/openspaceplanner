@@ -1,0 +1,40 @@
+{
+    "tasks": [
+        {
+            "name": "csharpier",
+            "group": "pre-commit",
+            "command": "dotnet",
+            "args": ["csharpier", "${staged}"],
+            "include": ["**/*.cs"]
+        },
+        {
+            "name": "prettier",
+            "group": "pre-commit",
+            "pathMode": "absolute",
+            "command": "npx",
+            "args": ["prettier", "--write", "${staged}"],
+            "include": [
+                "**/*.ts",
+                "**/*.js",
+                "**/*.css",
+                "**/*.scss",
+                "**/*.json",
+                "**/*.yml",
+                "**/*.md"
+            ]
+        },
+        {
+            "name": "prettier",
+            "group": "pre-commit",
+            "pathMode": "absolute",
+            "command": "npx",
+            "args": [
+                "prettier",
+                "--plugin=@prettier/plugin-xml",
+                "--write",
+                "${staged}"
+            ],
+            "include": ["**/*.csproj", "**/*.xml"]
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <Sdk Name="Aspire.AppHost.Sdk" Version="9.0.0" />
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <IsAspireHost>true</IsAspireHost>
+        <UserSecretsId>921d9cf0-fada-4345-9c12-84cd74dd2265</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aspire.Hosting.AppHost" />
+        <PackageReference Include="Aspire.Hosting.SqlServer" />
+        <PackageReference Include="Aspire.Hosting.NodeJs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference
+            Include="../WebApis/Backend/WebApi/Backend.WebApi.csproj"
+        />
+        <ProjectReference
+            Include="../Workers/PersistenceMigrationWorker/Workers.PersistenceMigrationWorker.csproj"
+        />
+    </ItemGroup>
+</Project>

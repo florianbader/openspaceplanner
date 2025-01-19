@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+    <PropertyGroup>
+        <UserSecretsId>eb487ddc-6065-4871-8f15-398e473e1bec</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Hosting" />
+        <PackageReference
+            Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer"
+        />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="../../Persistence/Persistence.csproj" />
+        <ProjectReference
+            Include="../../../../Common/src/Infrastructure/Workers/Common.PersistenceMigrationWorker/Common.PersistenceMigrationWorker.csproj"
+        />
+        <ProjectReference
+            Include="../../Modules/CoreModule/Persistence/CoreModule.Persistence.csproj"
+        />
+    </ItemGroup>
+</Project>

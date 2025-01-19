@@ -1,0 +1,47 @@
+{
+    "files.associations": {
+        "**/eng/**/*.yaml": "azure-pipelines",
+        "**/eng/**/*.yml": "azure-pipelines"
+    },
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.formatOnSaveMode": "file",
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit",
+        "source.addMissingImports.ts": "explicit",
+        "source.removeUnusedImports": "explicit"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "yaml.schemas": {
+        "https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json": "*.yml"
+    },
+    "[csharp]": {
+        "editor.defaultFormatter": "csharpier.csharpier-vscode"
+    },
+    "[xml]": {
+        "editor.defaultFormatter": "DotJoshJohnson.xml"
+    },
+    "[csproj]": {
+        "editor.defaultFormatter": "DotJoshJohnson.xml"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[azure-pipelines]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[bicep]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-bicep"
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+    }
+}

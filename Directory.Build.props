@@ -1,0 +1,145 @@
+<Project>
+    <PropertyGroup>
+        <!-- Target framework and language version -->
+        <TargetFramework>net9.0</TargetFramework>
+        <LangVersion>preview</LangVersion>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+
+        <!-- Code analysis and style enforcement -->
+        <AnalysisMode>Recommended</AnalysisMode>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+        <!-- Build determinism and source link -->
+        <Deterministic>true</Deterministic>
+        <EnableSourceLink>true</EnableSourceLink>
+
+        <!-- Continuous integration settings -->
+        <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+
+        <!-- Project metadata -->
+        <CompanyName>RioScaffolding</CompanyName>
+        <ProjectNamePrefix>$(CompanyName).OpenSpacePlanner</ProjectNamePrefix>
+        <RootNamespace>$(ProjectNamePrefix).$(MSBuildProjectName)</RootNamespace>
+        <AssemblyName>$(RootNamespace)</AssemblyName>
+
+        <!-- Package restore settings -->
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+        <RestoreLockedMode Condition="'$(ContinuousIntegrationBuild)' == 'true'">true</RestoreLockedMode>
+
+        <!-- Project type identification -->
+        <IsTestProject>$(MSBuildProjectName.EndsWith('Tests'))</IsTestProject>
+        <IsWebApiProject>false</IsWebApiProject>
+        <IsWebApiProject Condition="$(MSBuildProjectName.EndsWith('WebApi')) and !$(MSBuildProjectName.Contains('Common'))">true</IsWebApiProject>
+        <IsWebApiApplicationProject>false</IsWebApiApplicationProject>
+        <IsWebApiApplicationProject Condition="$(MSBuildProjectName.EndsWith('WebApi.Application')) and !$(MSBuildProjectName.Contains('Common'))">true</IsWebApiApplicationProject>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(IsTestProject)">
+        <IsPackable>false</IsPackable>
+
+        <!-- CA1707: Underscores in methods names are allowed in test projects for test method naming convention reasons -->
+        <!-- RCS1046: Async suffix in methods names are not needed in test projects for test method naming convention reasons  -->
+        <!-- SA1312: Variable names should begin with lower-case letter not needed in test projects as it clashes with assertion scope discard name -->
+        <NoWarn>$(NoWarn);CA1707;RCS1046;SA1312</NoWarn>
+        <WarningsNotAsErrors>$(WarningsNotAsErrors);CA1707;RCS1046;SA1312</WarningsNotAsErrors>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(IsWebApiProject)">
+        <!-- Disable invariant globalization to use culture-specific globalization -->
+        <InvariantGlobalization>false</InvariantGlobalization>
+
+        <!-- Include OpenAPI analyzers for API documentation and validation -->
+        <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <!-- Enforce code styling when building in Release mode so devs are not bothered during development in Debug mode -->
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+        <RunCodeAnalysis>true</RunCodeAnalysis>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- Code analysis packages -->
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" PrivateAssets="all" />
+        <PackageReference Include="StyleCop.Analyzers" PrivateAssets="all" />
+        <PackageReference Include="SonarAnalyzer.CSharp" PrivateAssets="all" />
+        <PackageReference Include="Roslynator.Analyzers" PrivateAssets="all" />
+        <PackageReference Include="IDisposableAnalyzers" PrivateAssets="all" />
+
+        <!-- InternalsVisibleTo attributes for testing -->
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>$(MSBuildProjectName).Tests</_Parameter1>
+        </AssemblyAttribute>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>DynamicProxyGenAssembly2</_Parameter1>
+        </AssemblyAttribute>
+
+        <!-- Additional configuration files -->
+        <AdditionalFiles Include="$(MSBuildThisFileDirectory)SonarLint.xml" />
+        <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" />
+    </ItemGroup>
+
+    <ItemGroup Condition="$(IsWebApiProject)">
+        <!-- Include common web api library in all web api projects -->
+        <ProjectReference Include="$(MSBuildThisFileDirectory)/projects/Common/src/WebApi/Common.WebApi/Common.WebApi.csproj" />
+        <Using Include="$(ProjectNamePrefix).Common.WebApi" />
+    </ItemGroup>
+
+    <ItemGroup Condition="$(IsWebApiApplicationProject)">
+        <!-- Include common web api library in all web api projects -->
+        <ProjectReference Include="$(MSBuildThisFileDirectory)/projects/Common/src/WebApi/Common.WebApi.Application/Common.WebApi.Application.csproj" />
+        <Using Include="$(ProjectNamePrefix).Common.WebApi.Application" />
+    </ItemGroup>
+
+    <ItemGroup Condition="$(IsTestProject) or $(MSBuildProjectName.Contains('Common.Testing'))">
+        <!-- Test SDK and frameworks -->
+        <PackageReference Include="Microsoft.NET.Test.Sdk" />
+        <PackageReference Include="xunit.v3" />
+        <PackageReference Include="coverlet.collector" />
+        <PackageReference Include="coverlet.msbuild" />
+
+        <!-- Assertion and mocking libraries -->
+        <PackageReference Include="FluentAssertions" />
+        <PackageReference Include="FluentAssertions.Analyzers" />
+        <PackageReference Include="NSubstitute" />
+        <PackageReference Include="MockQueryable.NSubstitute" />
+        <PackageReference Include="AutoFixture" />
+        <PackageReference Include="AutoFixture.AutoNSubstitute" />
+        <PackageReference Include="Bogus" />
+
+        <!-- Using directives for test projects -->
+        <Using Include="Xunit" />
+        <Using Include="NSubstitute" />
+        <Using Include="AutoFixture" />
+        <Using Include="FluentAssertions" />
+        <Using Include="Bogus" />
+    </ItemGroup>
+
+    <ItemGroup Condition="$(MSBuildProjectName.EndsWith('WebApi.IntegrationTests'))">
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
+        <PackageReference Include="FluentAssertions.Web" />
+
+        <!-- Include common testing library in all test projects -->
+        <ProjectReference Include="$(MSBuildThisFileDirectory)/projects/Common/src/Testing/Common.Testing.WebApi/Common.Testing.WebApi.csproj" />
+        <Using Include="$(ProjectNamePrefix).Common.Testing.WebApi" />
+    </ItemGroup>
+
+    <ItemGroup Condition="$(IsTestProject) and !$(MSBuildProjectName.EndsWith('Common.Testing'))">
+        <!-- Include common testing library in all test projects -->
+        <ProjectReference Include="$(MSBuildThisFileDirectory)/projects/Common/src/Testing/Common.Testing/Common.Testing.csproj" />
+        <Using Include="$(ProjectNamePrefix).Common.Testing" />
+    </ItemGroup>
+
+    <ItemGroup Condition="$(IsTestProject) and !$(TargetFramework.StartsWith('netstandard'))">
+        <!-- This ensures that test projects targeting .NET Core have the necessary xUnit runners for executing tests through dotnet test on the console and in Visual Studio -->
+        <PackageReference Include="xunit.v3.runner.console" />
+        <PackageReference Include="xunit.runner.visualstudio" />
+    </ItemGroup>
+</Project>

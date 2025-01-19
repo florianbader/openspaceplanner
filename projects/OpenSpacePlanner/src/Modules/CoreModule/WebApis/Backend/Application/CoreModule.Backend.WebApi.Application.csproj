@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <ItemGroup>
+        <None Remove="wwwroot/i18n/en.core.json" />
+        <Content Include="wwwroot/i18n/en.core.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference
+            Include="../../../Persistence/CoreModule.Persistence.csproj"
+        />
+    </ItemGroup>
+</Project>

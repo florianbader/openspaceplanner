@@ -1,0 +1,4 @@
+variables:
+    - template: /eng/variables.yml
+
+    - template: /eng/version.yml

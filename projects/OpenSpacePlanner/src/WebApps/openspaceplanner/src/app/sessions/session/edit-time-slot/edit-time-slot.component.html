@@ -1,0 +1,23 @@
+<shared-off-canvas title="{{ 'editTimeSlot' | translate }}" (save)="save()">
+    <form [formGroup]="formGroup">
+        <shared-input-text
+            id="name"
+            titleTranslateKey="name"
+        ></shared-input-text>
+
+        <shared-input-textarea
+            id="description"
+            titleTranslateKey="description"
+        ></shared-input-textarea>
+
+        <shared-input-time
+            id="fromTime"
+            titleTranslateKey="fromTime"
+        ></shared-input-time>
+
+        <shared-input-time
+            id="toTime"
+            titleTranslateKey="toTime"
+        ></shared-input-time>
+    </form>
+</shared-off-canvas>

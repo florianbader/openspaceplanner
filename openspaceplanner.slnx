@@ -1,0 +1,56 @@
+﻿<Solution>
+  <Folder Name="/Common/" />
+  <Folder Name="/Common/Persistence/">
+    <Project Path="projects\Common\src\Persistence\Common.Persistence\Common.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/Common/Testing/">
+    <Project Path="projects\Common\src\Testing\Common.Testing\Common.Testing.csproj" />
+  </Folder>
+  <Folder Name="/Common/WebApi/">
+    <Project Path="projects\Common\src\WebApi\Common.WebApi.Application\Common.WebApi.Application.csproj" />
+    <Project Path="projects\Common\src\WebApi\Common.WebApi.Aspire.ServiceDefaults\Common.WebApi.Aspire.ServiceDefaults.csproj" />
+    <Project Path="projects\Common\src\WebApi\Common.WebApi\Common.WebApi.csproj" />
+  </Folder>
+  <Folder Name="/Common/WebApps/">
+    <Project Path="projects\Common\src\WebApps\shared-ui\Common.WebApps.SharedUI.csproj" />
+  </Folder>
+  <Folder Name="/OpenSpacePlanner/">
+    <Project Path="projects\OpenSpacePlanner\src\Orchestrator\Aspire.Orchestrator.csproj" />
+    <Project Path="projects\OpenSpacePlanner\src\Persistence\Persistence.csproj" />
+  </Folder>
+  <Folder Name="/OpenSpacePlanner/WebApis/" />
+  <Folder Name="/OpenSpacePlanner/WebApis/Backend/">
+    <Project Path="projects\OpenSpacePlanner\src\WebApis\Backend\WebApi\Backend.WebApi.csproj" />
+  </Folder>
+  <Folder Name="/OpenSpacePlanner/WebApps/">
+    <Project Path="projects\OpenSpacePlanner\src\WebApps\openspaceplanner\WebApps.OpenSpacePlanner.csproj" />
+    <Project Path="projects\OpenSpacePlanner\src\WebApps\shared-backend-api\WebApps.SharedBackendApi.csproj" />
+  </Folder>
+  <Folder Name="/OpenSpacePlanner/Workers/">
+    <Project Path="projects\OpenSpacePlanner\src\Workers\PersistenceMigrationWorker\Workers.PersistenceMigrationWorker.csproj" />
+  </Folder>
+  <Folder Name="/Modules/" />
+  <Folder Name="/Modules/CoreModule/">
+    <Project Path="projects\OpenSpacePlanner\src\Modules\CoreModule\Persistence\CoreModule.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/Modules/CoreModule/WebApis/" />
+  <Folder Name="/Modules/CoreModule/WebApis/Backend/">
+    <Project Path="projects\OpenSpacePlanner\src\Modules\CoreModule\WebApis\Backend\Application\CoreModule.Backend.WebApi.Application.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".csharpierrc.json" />
+    <File Path=".editorconfig" />
+    <File Path=".eslintrc.json" />
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path=".netconfig" />
+    <File Path=".prettierrc" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+    <File Path="LICENSE" />
+    <File Path="package.json" />
+    <File Path="README.md" />
+    <File Path="SonarLint.xml" />
+  </Folder>
+</Solution>

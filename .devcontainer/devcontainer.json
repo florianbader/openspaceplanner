@@ -1,0 +1,98 @@
+{
+    "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.schema.json",
+    "name": "OpenSpacePlanner",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "features": {
+        "ghcr.io/devcontainers/features/git": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/git-lfs": {
+            "version": "latest",
+            "autoPull": true
+        },
+        "ghcr.io/devcontainers/features/dotnet:2": {
+            "version": "8.0"
+        },
+        "ghcr.io/devcontainers/features/node:1": {
+            "nodeGypDependencies": true,
+            "version": "18",
+            "nvmVersion": "0.39"
+        },
+        "ghcr.io/devcontainers/features/azure-cli:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+            "moby": true,
+            "azureDnsAutoDetection": true,
+            "installDockerBuildx": true,
+            "installDockerComposeSwitch": true,
+            "version": "latest",
+            "dockerDashComposeVersion": "none"
+        },
+        "ghcr.io/devcontainers/features/powershell:1": {
+            "version": "latest"
+        }
+    },
+    "forwardPorts": [1433, 4100, 7100, 17295],
+    "portsAttributes": {
+        "1433": {
+            "label": "SQL Server"
+        },
+        "4100": {
+            "label": "Open Space Planner (WebApp)"
+        },
+        "7100": {
+            "label": "Open Space Planner (WebApi)"
+        },
+        "17295": {
+            "label": "Aspire Dashboard"
+        }
+    },
+    "containerUser": "root",
+    "remoteUser": "root",
+    "postCreateCommand": "chmod +x ./.devcontainer/scripts/post-create.sh && ./.devcontainer/scripts/post-create.sh ${containerWorkspaceFolder}",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "angular.ng-template",
+                "csharpier.csharpier-vscode",
+                "davidanson.vscode-markdownlint",
+                "dbaeumer.vscode-eslint",
+                "DotJoshJohnson.xml",
+                "ecmel.vscode-html-css",
+                "editorconfig.editorconfig",
+                "esbenp.prettier-vscode",
+                "formulahendry.dotnet-test-explorer",
+                "hbenl.vscode-test-explorer",
+                "ms-azure-devops.azure-pipelines",
+                "ms-azuretools.vscode-bicep",
+                "ms-dotnettools.csdevkit",
+                "ms-dotnettools.csharp",
+                "ms-mssql.mssql",
+                "orta.vscode-jest"
+            ],
+            "settings": {
+                "mssql.connections": [
+                    {
+                        "server": "sqlserver",
+                        "database": "openspaceplanner",
+                        "authenticationType": "SqlLogin",
+                        "user": "sa",
+                        "password": "P@ssw0rd",
+                        "emptyPasswordInput": false,
+                        "savePassword": true,
+                        "profileName": "SQL Server",
+                        "encrypt": "Mandatory",
+                        "trustServerCertificate": true,
+                        "connectTimeout": 15,
+                        "commandTimeout": 30,
+                        "applicationName": "vscode-mssql"
+                    }
+                ]
+            }
+        }
+    }
+}

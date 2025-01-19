@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <ItemGroup>
+        <ProjectReference
+            Include="../Application/CoreModule.Backend.WebApi.Application.csproj"
+        />
+    </ItemGroup>
+</Project>

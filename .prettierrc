@@ -1,0 +1,21 @@
+{
+    "singleQuote": true,
+    "overrides": [
+        {
+            "files": "*.ts,*.js",
+            "options": {
+                "quoteProps": "consistent",
+                "semi": true,
+                "trailingComma": "es5"
+            }
+        },
+        {
+            "files": "*.yml,*.yaml",
+            "options": {
+                "quoteProps": "consistent",
+                "useTabs": false,
+                "tabWidth": 4
+            }
+        }
+    ]
+}

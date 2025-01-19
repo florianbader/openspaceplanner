@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Migrations/" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference
+            Include="../../../Common/src/Persistence/Common.Persistence/Common.Persistence.csproj"
+        />
+        <ProjectReference
+            Include="../Modules/CoreModule/Persistence/CoreModule.Persistence.csproj"
+        />
+    </ItemGroup>
+</Project>

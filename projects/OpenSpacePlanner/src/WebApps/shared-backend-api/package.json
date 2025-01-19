@@ -1,0 +1,15 @@
+{
+    "name": "@rio-scaffolding/shared-backend-api",
+    "version": "0.0.1",
+    "scripts": {
+        "build": "npm run backend:build && npm run generate",
+        "generate": "npm run backend:generate",
+        "backend:generate": "openapi-generator-cli generate -g typescript-angular -i ../../WebApis/Backend/WebApi/swagger.json -o src/lib --additional-properties ngVersion=17.0.0 --global-property apis,models,supportingFiles && rimraf src/lib/.openapi-generator/VERSION && rimraf src/lib/.openapi-generator/FILES",
+        "backend:build": "cross-env ASPNETCORE_ENVIRONMENT=Development && dotnet build -c Release ../../WebApis/Backend/WebApi/Backend.WebApi.csproj"
+    },
+    "peerDependencies": {
+        "@angular/common": "^18.2.0",
+        "@angular/core": "^18.2.0"
+    },
+    "sideEffects": false
+}

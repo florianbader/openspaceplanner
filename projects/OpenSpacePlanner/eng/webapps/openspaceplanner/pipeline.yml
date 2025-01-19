@@ -1,0 +1,29 @@
+trigger:
+    - main
+
+pool:
+    vmImage: 'ubuntu-latest'
+
+stages:
+    - template: templates/build/build-angular.yml
+      parameters:
+          project: 'apps/frontend'
+
+    - template: templates/build/docker-build.yml
+      parameters:
+          imageName: 'frontend-app'
+          dockerfilePath: 'Dockerfile.frontend'
+          buildContext: '.'
+
+    - template: templates/deploy/deploy-acr.yml
+      parameters:
+          imageName: 'frontend-app'
+          registry: 'myacr.azurecr.io'
+
+    - template: templates/deploy/deploy-aca.yml
+      parameters:
+          imageName: 'frontend-app'
+          registry: 'myacr.azurecr.io'
+          containerAppName: 'frontend-app'
+          azureSubscription: 'your-azure-subscription'
+          environment: 'dev' # Change to 'test' or 'prod' as needed

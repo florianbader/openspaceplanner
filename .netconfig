@@ -1,0 +1,10 @@
+# This configuration file is used by the dotnet report generator for creating code coverage reports.
+# Use this config to explicitly include or exclude assemblies, classes, and files from code coverage.
+# Uncomment and modify the filters as needed to customize the coverage report.
+[ReportGenerator]
+    # assemblyfilter = +Test
+    # assemblyfilter = -Test
+    # classfilter = +Test2
+    # classfilter = -Test2
+    # filefilter = +cs
+    # filefilter = -vb

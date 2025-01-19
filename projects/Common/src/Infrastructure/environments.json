@@ -1,0 +1,5 @@
+{
+    "prod": "prd",
+    "test": "tst",
+    "dev": "dev"
+}

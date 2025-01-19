@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Core: Run Orchestrator",
+            "type": "shell",
+            "command": "dotnet run --project projects/OpenSpacePlanner/src/Orchestrator/Aspire.Orchestrator.csproj",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "ASPNETCORE_ENVIRONMENT": "Development"
+                }
+            },
+            "problemMatcher": ["$msCompile"]
+        }
+    ]
+}

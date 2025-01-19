@@ -1,0 +1,27 @@
+parameters:
+    - name: imageName
+      type: string
+
+    - name: registry
+      type: string
+
+    - name: containerAppName
+      type: string
+
+    - name: azureSubscription
+      type: string
+
+    - name: environment
+      type: string
+
+steps:
+    - task: AzureCLI@2
+      inputs:
+          azureSubscription: ${{ parameters.azureSubscription }}
+          scriptType: 'bash'
+          scriptLocation: 'inlineScript'
+          inlineScript: |
+              az containerapp update \
+                --name ${{ parameters.containerAppName }} \
+                --resource-group your-resource-group-${{ parameters.environment }} \
+                --image ${{ parameters.registry }}/${{ parameters.imageName }}:$(Build.BuildId)

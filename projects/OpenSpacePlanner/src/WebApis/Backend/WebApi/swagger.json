@@ -1,0 +1,1013 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/i18n/translations/{localeCode}": {
+            "get": {
+                "tags": ["Internationalization"],
+                "summary": "Gets all localization texts.",
+                "operationId": "GetTranslations",
+                "parameters": [
+                    {
+                        "name": "localeCode",
+                        "in": "path",
+                        "description": "The locale code. Defaults to english.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "api-version",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{__tenant__}/api/sessions/{sessionId}/rooms": {
+            "post": {
+                "tags": ["Rooms"],
+                "summary": "Creates a new rooms item.",
+                "operationId": "CreateRoom",
+                "parameters": [
+                    {
+                        "name": "__tenant__",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sessionId",
+                        "in": "path",
+                        "description": "The session id.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/SessionId"
+                        }
+                    },
+                    {
+                        "name": "api-version",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The new room.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateRoomCommand"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Room"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{__tenant__}/api/sessions/{sessionId}/rooms/{id}": {
+            "delete": {
+                "tags": ["Rooms"],
+                "summary": "Deletes the specific room.",
+                "operationId": "DeleteRoom",
+                "parameters": [
+                    {
+                        "name": "__tenant__",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sessionId",
+                        "in": "path",
+                        "description": "The id of the session.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/SessionId"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the room.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/RoomId"
+                        }
+                    },
+                    {
+                        "name": "api-version",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Rooms"],
+                "summary": "Updates the specific room.",
+                "operationId": "UpdateRoom",
+                "parameters": [
+                    {
+                        "name": "__tenant__",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sessionId",
+                        "in": "path",
+                        "description": "The id of the session.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/SessionId"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the room.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/RoomId"
+                        }
+                    },
+                    {
+                        "name": "api-version",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The new room.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Room"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Room"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{__tenant__}/api/sessions": {
+            "post": {
+                "tags": ["Sessions"],
+                "summary": "Creates a new sessions item.",
+                "operationId": "CreateSession",
+                "parameters": [
+                    {
+                        "name": "__tenant__",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "api-version",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The new session.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateSessionCommand"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Session"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Sessions"],
+                "summary": "Gets all sessions.",
+                "operationId": "GetAllSessions",
+                "parameters": [
+                    {
+                        "name": "__tenant__",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "orderBy",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "api-version",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SessionItemsResult"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{__tenant__}/api/sessions/{id}": {
+            "delete": {
+                "tags": ["Sessions"],
+                "summary": "Deletes the specific to do item.",
+                "operationId": "DeleteSession",
+                "parameters": [
+                    {
+                        "name": "__tenant__",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the to do item.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/SessionId"
+                        }
+                    },
+                    {
+                        "name": "api-version",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Sessions"],
+                "summary": "Gets the specific session.",
+                "operationId": "GetSession",
+                "parameters": [
+                    {
+                        "name": "__tenant__",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the session.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/SessionId"
+                        }
+                    },
+                    {
+                        "name": "api-version",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Session"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Sessions"],
+                "summary": "Updates the specific session.",
+                "operationId": "UpdateSession",
+                "parameters": [
+                    {
+                        "name": "__tenant__",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the session.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/SessionId"
+                        }
+                    },
+                    {
+                        "name": "api-version",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The updated session object.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateSession"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Session"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{__tenant__}/api/sessions/{sessionId}/timeslots": {
+            "post": {
+                "tags": ["TimeSlots"],
+                "summary": "Creates a new time slots item.",
+                "operationId": "CreateTimeSlot",
+                "parameters": [
+                    {
+                        "name": "__tenant__",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sessionId",
+                        "in": "path",
+                        "description": "The session id.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/SessionId"
+                        }
+                    },
+                    {
+                        "name": "api-version",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The new time slot.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateTimeSlotCommand"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TimeSlot"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{__tenant__}/api/sessions/{sessionId}/timeslots/{id}": {
+            "delete": {
+                "tags": ["TimeSlots"],
+                "summary": "Deletes the specific to do item.",
+                "operationId": "DeleteTimeSlot",
+                "parameters": [
+                    {
+                        "name": "__tenant__",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sessionId",
+                        "in": "path",
+                        "description": "The id of the session.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/SessionId"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the to do item.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/TimeSlotId"
+                        }
+                    },
+                    {
+                        "name": "api-version",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["TimeSlots"],
+                "summary": "Updates the specific time slot.",
+                "operationId": "UpdateTimeSlot",
+                "parameters": [
+                    {
+                        "name": "__tenant__",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sessionId",
+                        "in": "path",
+                        "description": "The id of the session.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/SessionId"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the time slot.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/TimeSlotId"
+                        }
+                    },
+                    {
+                        "name": "api-version",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The new time slot.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TimeSlot"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TimeSlot"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{__tenant__}/api/sessions/{sessionId}/topics": {
+            "post": {
+                "tags": ["Topics"],
+                "summary": "Creates a new topics item.",
+                "operationId": "CreateTopic",
+                "parameters": [
+                    {
+                        "name": "__tenant__",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sessionId",
+                        "in": "path",
+                        "description": "The session id.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/SessionId"
+                        }
+                    },
+                    {
+                        "name": "api-version",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The new topic.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateTopicCommand"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Topic"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{__tenant__}/api/sessions/{sessionId}/topics/{id}": {
+            "delete": {
+                "tags": ["Topics"],
+                "summary": "Deletes the specific to do item.",
+                "operationId": "DeleteTopic",
+                "parameters": [
+                    {
+                        "name": "__tenant__",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sessionId",
+                        "in": "path",
+                        "description": "The id of the session.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/SessionId"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the to do item.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/TopicId"
+                        }
+                    },
+                    {
+                        "name": "api-version",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Topics"],
+                "summary": "Updates the specific topic.",
+                "operationId": "UpdateTopic",
+                "parameters": [
+                    {
+                        "name": "__tenant__",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sessionId",
+                        "in": "path",
+                        "description": "The id of the session.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/SessionId"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the topic.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/TopicId"
+                        }
+                    },
+                    {
+                        "name": "api-version",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The new topic.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Topic"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Topic"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CreateRoomCommand": {
+                "required": ["name"],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CreateSessionCommand": {
+                "required": ["name"],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CreateTimeSlotCommand": {
+                "required": ["name"],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "CreateTopicCommand": {
+                "required": ["name"],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "PageResult": {
+                "required": ["currentPage", "size", "totalItems", "totalPages"],
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "type": "integer",
+                        "description": "Gets the size of the paginated result.",
+                        "format": "int32"
+                    },
+                    "totalItems": {
+                        "type": "integer",
+                        "description": "Gets the total items of the paginated result.",
+                        "format": "int32"
+                    },
+                    "totalPages": {
+                        "type": "integer",
+                        "description": "Gets the total pages of the paginated result.",
+                        "format": "int32"
+                    },
+                    "currentPage": {
+                        "type": "integer",
+                        "description": "Gets the current page of the paginated result.",
+                        "format": "int32"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Room": {
+                "required": ["id", "name"],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "RoomId": {
+                "type": "string",
+                "format": "uuid"
+            },
+            "Session": {
+                "required": ["id", "name", "rooms", "timeSlots", "topics"],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "rooms": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Room"
+                        }
+                    },
+                    "timeSlots": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TimeSlot"
+                        }
+                    },
+                    "topics": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Topic"
+                        }
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SessionId": {
+                "type": "string",
+                "format": "uuid"
+            },
+            "SessionItemsResult": {
+                "required": ["items", "pages"],
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Session"
+                        },
+                        "description": "Gets the items."
+                    },
+                    "pages": {
+                        "$ref": "#/components/schemas/PageResult"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "TimeSlot": {
+                "required": ["id", "name"],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "fromTime": {
+                        "type": "string",
+                        "format": "time",
+                        "nullable": true
+                    },
+                    "toTime": {
+                        "type": "string",
+                        "format": "time",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "TimeSlotId": {
+                "type": "string",
+                "format": "uuid"
+            },
+            "Topic": {
+                "required": ["id", "name"],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "roomId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "nullable": true
+                    },
+                    "timeSlotId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "TopicId": {
+                "type": "string",
+                "format": "uuid"
+            },
+            "UpdateSession": {
+                "required": ["name"],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            }
+        }
+    }
+}

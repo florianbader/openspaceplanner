@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
+    <PackageReference Include="FluentAssertions.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference
+            Include="../Common.Testing.Persistence/Common.Testing.Persistence.csproj"
+        />
+  </ItemGroup>
+</Project>

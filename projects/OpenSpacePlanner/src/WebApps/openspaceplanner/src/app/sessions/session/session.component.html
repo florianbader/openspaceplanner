@@ -1,0 +1,94 @@
+@if (session(); as session) {
+    <div sharedHoverButtonContainer>
+        <h1>
+            <span>{{ session.name }}</span>
+            <shared-hover-edit-button
+                (click)="editSession.open(session)"
+            ></shared-hover-edit-button>
+        </h1>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table session-table table-striped table-hover">
+            <thead>
+                <tr class="table-row">
+                    <th class="table-cell"></th>
+
+                    @for (room of rooms(); track room.id) {
+                        <th
+                            class="table-cell"
+                            id="roomId"
+                            sharedHoverButtonContainer
+                        >
+                            <span>{{ room.name }}</span>
+                            <shared-hover-edit-button
+                                (click)="editRoom.open(room)"
+                            ></shared-hover-edit-button>
+                        </th>
+                    }
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (timeSlot of timeSlots(); track timeSlot.id) {
+                    <tr class="table-row">
+                        <td class="table-cell" sharedHoverButtonContainer>
+                            <span>{{ timeSlot.name }}</span>
+                            <shared-hover-edit-button
+                                (click)="editTimeSlot.open(timeSlot)"
+                            ></shared-hover-edit-button>
+                        </td>
+
+                        @for (room of rooms(); track room.id) {
+                            @let topic = getTopic(timeSlot.id, room.id);
+                            @if (topic) {
+                                <td class="table-cell topic-space">
+                                    <app-topic-item
+                                        [topic]="topic"
+                                    ></app-topic-item>
+                                </td>
+                            } @else {
+                                <td class="table-cell topic-space"></td>
+                            }
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="unassigned-topics">
+        @for (topic of unassignedTopics(); track topic.id) {
+            <app-topic-item [topic]="topic"></app-topic-item>
+        }
+    </div>
+
+    <shared-floating-action-button>
+        <shared-floating-action-button-item
+            [icon]="['fas', 'clock']"
+            (click)="createTimeSlot()"
+        >
+            {{ 'createTimeSlot' | translate }}
+        </shared-floating-action-button-item>
+
+        <shared-floating-action-button-item
+            [icon]="['fas', 'home']"
+            (click)="createRoom()"
+        >
+            {{ 'createRoom' | translate }}
+        </shared-floating-action-button-item>
+
+        <shared-floating-action-button-item
+            [icon]="['fas', 'calendar']"
+            (click)="createTopic()"
+        >
+            {{ 'createTopic' | translate }}
+        </shared-floating-action-button-item>
+    </shared-floating-action-button>
+
+    <app-edit-room #editRoom></app-edit-room>
+    <app-edit-session #editSession></app-edit-session>
+    <app-edit-time-slot #editTimeSlot></app-edit-time-slot>
+} @else {
+    <h1 class="title">Session not found</h1>
+}

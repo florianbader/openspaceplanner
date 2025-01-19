@@ -1,0 +1,29 @@
+{
+    "name": "shared-backend-api",
+    "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "projects/OpenSpacePlanner/src/WebApps/shared-backend-api/src",
+    "prefix": "shared",
+    "projectType": "library",
+    "tags": ["scope:core"],
+    "targets": {
+        "build": {
+            "executor": "@nx/angular:package",
+            "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+            "options": {
+                "project": "projects/OpenSpacePlanner/src/WebApps/shared-backend-api/ng-package.json"
+            },
+            "configurations": {
+                "production": {
+                    "tsConfig": "projects/OpenSpacePlanner/src/WebApps/shared-backend-api/tsconfig.lib.prod.json"
+                },
+                "development": {
+                    "tsConfig": "projects/OpenSpacePlanner/src/WebApps/shared-backend-api/tsconfig.lib.json"
+                }
+            },
+            "defaultConfiguration": "production"
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint"
+        }
+    }
+}

@@ -1,0 +1,55 @@
+parameters:
+    - name: major
+      type: number
+      default: 1
+
+    - name: minor
+      type: number
+      default: 0
+
+    - name: prerelease
+      type: string
+      default: ''
+
+    - name: build
+      type: string
+      default: ''
+
+    - name: buildSeed
+      type: number
+      default: 1
+
+variables:
+    - name: Version.Major
+      value: ${{ parameters.major }}
+
+    - name: Version.Minor
+      value: ${{ parameters.minor }}
+
+    - name: Version.MajorMinor
+      value: ${{ variables['Version.Major'] }}.${{ variables['Version.Minor'] }}
+
+    - name: Version.Patch
+      value: $[counter(variables['Version.MajorMinor'], parameters.buildSeed)]
+
+    - name: Version.Prerelease
+      value: ${{ parameters.prerelease }}
+
+    - name: Version.Build
+      value: ${{ parameters.build }}
+
+    - ${{ if and(ne(parameters.prerelease, ''), ne(parameters.build, '')) }}:
+          - name: Version
+            value: ${{ variables['Version.Major'] }}.${{ variables['Version.Minor'] }}.$(Version.Patch)-${{ variables['Version.Prerelease'] }}+${{ variables['Version.Build'] }}
+
+    - ${{ elseif ne(parameters.prerelease, '') }}:
+          - name: Version
+            value: ${{ variables['Version.Major'] }}.${{ variables['Version.Minor'] }}.$(Version.Patch)-${{ variables['Version.Prerelease'] }}
+
+    - ${{ elseif ne(parameters.build, '') }}:
+          - name: Version
+            value: ${{ variables['Version.Major'] }}.${{ variables['Version.Minor'] }}.$(Version.Patch)+${{ variables['Version.Build'] }}
+
+    - ${{ else }}:
+          - name: Version
+            value: ${{ variables['Version.Major'] }}.${{ variables['Version.Minor'] }}.$(Version.Patch)

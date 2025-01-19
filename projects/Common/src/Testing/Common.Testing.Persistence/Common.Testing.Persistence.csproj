@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <ItemGroup>
+        <PackageReference Include="Respawn" />
+        <PackageReference Include="Testcontainers" />
+        <PackageReference Include="Testcontainers.MsSql" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="../Common.Testing/Common.Testing.csproj" />
+    </ItemGroup>
+</Project>

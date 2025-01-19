@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+    <PropertyGroup>
+        <UserSecretsId>8c88f8eb-bf0d-42a8-8fa1-8f68c2774a37</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference
+            Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer"
+        />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="../../../Persistence/Persistence.csproj" />
+        <ProjectReference
+            Include="../../../Modules/CoreModule/WebApis/Backend/Application/CoreModule.Backend.WebApi.Application.csproj"
+        />
+    </ItemGroup>
+</Project>

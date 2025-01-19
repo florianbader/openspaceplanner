@@ -1,0 +1,7 @@
+<Project>
+    <!-- This target is executed after building a web API project to generate the Swagger JSON file,
+        which can be consumed in frontend web apps to generate the frontend clients. -->
+    <Target Condition="$(IsWebApiProject)" Name="CreateSwaggerJson" AfterTargets="Build">
+        <Exec Command="dotnet swagger tofile --output swagger.json $(OutputPath)$(AssemblyName).dll v1" WorkingDirectory="$(MSBuildProjectDir)" EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development;DOTNET_ROLL_FORWARD=LatestMajor" />
+    </Target>
+</Project>

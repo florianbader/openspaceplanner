@@ -1,0 +1,83 @@
+{
+    "name": "openspaceplanner",
+    "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "application",
+    "prefix": "app",
+    "sourceRoot": "projects/OpenSpacePlanner/src/WebApps/openspaceplanner/src",
+    "tags": ["scope:client"],
+    "targets": {
+        "build": {
+            "executor": "@angular-devkit/build-angular:application",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/openspaceplanner",
+                "index": "projects/OpenSpacePlanner/src/WebApps/openspaceplanner/src/index.html",
+                "browser": "projects/OpenSpacePlanner/src/WebApps/openspaceplanner/src/main.ts",
+                "polyfills": [],
+                "tsConfig": "projects/OpenSpacePlanner/src/WebApps/openspaceplanner/tsconfig.app.json",
+                "inlineStyleLanguage": "scss",
+                "assets": [
+                    {
+                        "glob": "**/*",
+                        "input": "projects/OpenSpacePlanner/src/WebApps/openspaceplanner/public"
+                    }
+                ],
+                "styles": [
+                    "projects/OpenSpacePlanner/src/WebApps/openspaceplanner/src/styles.scss"
+                ],
+                "scripts": []
+            },
+            "configurations": {
+                "production": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "500kb",
+                            "maximumError": "5mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "2kb",
+                            "maximumError": "4kb"
+                        }
+                    ],
+                    "outputHashing": "all",
+                    "fileReplacements": [
+                        {
+                            "replace": "projects/OpenSpacePlanner/src/WebApps/openspaceplanner/src/environments/environment.ts",
+                            "with": "projects/OpenSpacePlanner/src/WebApps/openspaceplanner/src/environments/environment.prod.ts"
+                        }
+                    ]
+                },
+                "development": {
+                    "optimization": false,
+                    "extractLicenses": false,
+                    "sourceMap": true
+                }
+            },
+            "defaultConfiguration": "production"
+        },
+        "serve": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+                "production": {
+                    "buildTarget": "openspaceplanner:build:production"
+                },
+                "development": {
+                    "buildTarget": "openspaceplanner:build:development"
+                }
+            },
+            "defaultConfiguration": "development"
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint"
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "projects/OpenSpacePlanner/src/WebApps/openspaceplanner/jest.config.ts"
+            }
+        }
+    }
+}

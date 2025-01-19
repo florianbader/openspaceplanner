@@ -1,0 +1,7 @@
+parameters:
+    - name: AzureSubscriptionName
+      type: string
+
+variables:
+    - name: AzureSubscriptionName
+      value: ${{ parameters.AzureSubscriptionName }}

@@ -1,0 +1,23 @@
+{
+    "recommendations": [
+        "angular.ng-template",
+        "csharpier.csharpier-vscode",
+        "davidanson.vscode-markdownlint",
+        "dbaeumer.vscode-eslint",
+        "DotJoshJohnson.xml",
+        "ecmel.vscode-html-css",
+        "editorconfig.editorconfig",
+        "esbenp.prettier-vscode",
+        "firsttris.vscode-jest-runner",
+        "formulahendry.dotnet-test-explorer",
+        "hbenl.vscode-test-explorer",
+        "ms-azure-devops.azure-pipelines",
+        "ms-azuretools.vscode-bicep",
+        "ms-dotnettools.csdevkit",
+        "ms-dotnettools.csharp",
+        "ms-mssql.mssql",
+        "ms-vscode-remote.remote-containers",
+        "nrwl.angular-console",
+        "orta.vscode-jest"
+    ]
+}

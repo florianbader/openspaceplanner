@@ -1,0 +1,28 @@
+parameters:
+    - name: testEnable
+      type: boolean
+      default: true
+
+stages:
+    - stage: Build
+      jobs:
+          - job: Build
+            steps:
+                - template: /eng/templates/build/dotnet.yml
+                  parameters:
+                      projects: 'projects/OpenSpacePlanner/src/WebApis/Backend/**/*.csproj'
+                      testEnable: ${{ parameters.testEnable }}
+                      publishArtifactName: 'backend-api'
+                      publishArtifactEnable: false # don't publish as we use it directly to create the docker image
+
+                - template: /eng/templates/build/container-image.yml
+                  parameters:
+                      imageName: 'backend-api'
+                      dockerFilePath: 'projects/OpenSpacePlanner/src/WebApis/Backend/Dockerfile.ci'
+                      buildContext: $(Build.ArtifactStagingDirectory)/backend-api
+
+                - template: /eng/templates/deploy/container-registry.yml
+                  parameters:
+                      pullEnable: false
+                      pushRegistry: 'crospdevweudevelopment.azurecr.io'
+                      pushImageName: 'backend-api'

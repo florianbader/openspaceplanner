@@ -1,0 +1,21 @@
+<div
+    class="dropup position-fixed bottom-0 end-0 rounded-circle m-4"
+    ngbDropdown
+    container="body"
+    dropdownClass="floating-action-button"
+>
+    <button
+        type="button"
+        class="btn btn-primary rounded-circle dropdown-toggle hide-toggle"
+        ngbDropdownToggle
+    >
+        <fa-icon
+            [icon]="['fas', 'plus']"
+            [fixedWidth]="true"
+            size="xs"
+        ></fa-icon>
+    </button>
+    <div ngbDropdownMenu>
+        <ng-content></ng-content>
+    </div>
+</div>

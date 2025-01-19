@@ -1,0 +1,24 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a routerLink="/" class="navbar-brand">
+                <fa-icon [icon]="['fas', 'calendar']" size="1x"></fa-icon>
+                <span class="m-2">{{
+                    'openSpacePlannerTitle' | translate
+                }}</span>
+            </a>
+        </div>
+    </nav>
+</header>
+
+<main class="flex-shrink-0">
+    <shared-breadcrumbs [breadcrumbs]="breadcrumbs()"></shared-breadcrumbs>
+
+    <div class="container-fluid">
+        <div class="bg-body-tertiary p-3 rounded">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</main>
+
+<ngx-ui-loader></ngx-ui-loader>

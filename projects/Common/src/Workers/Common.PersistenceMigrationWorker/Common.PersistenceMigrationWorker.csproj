@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <RootNamespace>$(ProjectNamePrefix).Common.Workers</RootNamespace>
+        <UserSecretsId>76ce40a2-ac82-45c3-a5b2-eecb687fcd09</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Hosting" />
+        <PackageReference
+            Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer"
+        />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference
+            Include="../../WebApi/Common.WebApi.Aspire.ServiceDefaults/Common.WebApi.Aspire.ServiceDefaults.csproj"
+        />
+    </ItemGroup>
+</Project>

@@ -1,0 +1,11 @@
+.dropup .hide-toggle.dropdown-toggle::after {
+    display: none !important;
+}
+
+::ng-deep .floating-action-button {
+    .dropdown-menu {
+        margin-bottom: 1rem;
+        background: none;
+        border: none;
+    }
+}

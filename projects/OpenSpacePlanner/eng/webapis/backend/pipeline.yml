@@ -1,0 +1,20 @@
+trigger:
+    - main
+
+parameters:
+    - name: testEnable
+      displayName: 'Should run automatic tests'
+      type: boolean
+      default: true
+
+pool: 'Managed'
+
+variables:
+    - template: ../../variables.yml
+
+name: $(Version)
+
+stages:
+    - template: build.yml
+      parameters:
+          testEnable: ${{ parameters.testEnable }}

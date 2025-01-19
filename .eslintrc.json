@@ -1,0 +1,142 @@
+{
+    "root": true,
+    "ignorePatterns": [],
+    "overrides": [
+        {
+            "files": ["*.ts"],
+            "parserOptions": {
+                "project": ["tsconfig.json"],
+                "createDefaultProgram": true
+            },
+            "extends": [
+                "plugin:@nx/typescript",
+                "eslint:recommended",
+                "plugin:@typescript-eslint/recommended",
+                "plugin:@angular-eslint/recommended",
+                "plugin:prettier/recommended",
+                "plugin:rxjs/recommended"
+            ],
+            "rules": {
+                "@nx/enforce-module-boundaries": [
+                    "error",
+                    {
+                        "enforceBuildableLibDependency": true,
+                        "allow": [],
+                        "depConstraints": [
+                            {
+                                "sourceTag": "scope:shared",
+                                "onlyDependOnLibsWithTags": ["scope:shared"]
+                            },
+                            {
+                                "sourceTag": "scope:core",
+                                "onlyDependOnLibsWithTags": [
+                                    "scope:shared",
+                                    "scope:core"
+                                ]
+                            },
+                            {
+                                "sourceTag": "scope:client",
+                                "onlyDependOnLibsWithTags": [
+                                    "scope:shared",
+                                    "scope:core"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "@angular-eslint/component-selector": [
+                    "error",
+                    {
+                        "type": "element",
+                        "prefix": "app",
+                        "style": "kebab-case"
+                    }
+                ],
+                "@angular-eslint/directive-selector": [
+                    "error",
+                    {
+                        "type": "attribute",
+                        "prefix": "app",
+                        "style": "camelCase"
+                    }
+                ],
+                "no-console": [
+                    "error",
+                    {
+                        "allow": ["warn", "error"]
+                    }
+                ],
+                "max-depth": ["error", 4],
+                "max-len": ["error", 240],
+                "max-lines": [
+                    "error",
+                    {
+                        "max": 300,
+                        "skipBlankLines": true,
+                        "skipComments": true
+                    }
+                ],
+                "max-lines-per-function": [
+                    "error",
+                    {
+                        "max": 30,
+                        "skipBlankLines": true,
+                        "skipComments": true
+                    }
+                ],
+                "max-nested-callbacks": [
+                    "error",
+                    {
+                        "max": 5
+                    }
+                ],
+                "max-params": [
+                    "error",
+                    {
+                        "max": 10
+                    }
+                ],
+                "max-statements": [
+                    "error",
+                    {
+                        "max": 22
+                    }
+                ],
+                "complexity": [
+                    "error",
+                    {
+                        "max": 14
+                    }
+                ],
+                "quotes": ["error", "single"],
+                "quote-props": ["error", "as-needed"],
+                "import/no-absolute-path": "error"
+            },
+            "plugins": [
+                "@nx",
+                "@typescript-eslint",
+                "@angular-eslint",
+                "prettier",
+                "rxjs",
+                "import"
+            ]
+        },
+        {
+            "files": ["*.js", "*.jsx"],
+            "extends": ["plugin:@nx/javascript"],
+            "rules": {}
+        },
+        {
+            "files": ["*.html"],
+            "extends": ["plugin:@angular-eslint/template/recommended"],
+            "rules": {}
+        },
+        {
+            "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+            "env": {
+                "jest": true
+            },
+            "rules": {}
+        }
+    ]
+}

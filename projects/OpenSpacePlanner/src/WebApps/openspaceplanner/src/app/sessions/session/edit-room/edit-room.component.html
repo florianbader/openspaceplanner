@@ -1,0 +1,13 @@
+<shared-off-canvas title="{{ 'editRoom' | translate }}" (save)="save()">
+    <form [formGroup]="formGroup">
+        <shared-input-text
+            id="name"
+            titleTranslateKey="name"
+        ></shared-input-text>
+
+        <shared-input-textarea
+            id="description"
+            titleTranslateKey="description"
+        ></shared-input-textarea>
+    </form>
+</shared-off-canvas>

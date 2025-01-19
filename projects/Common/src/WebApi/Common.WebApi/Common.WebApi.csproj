@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <ItemGroup>
+        <PackageReference
+            Include="Microsoft.AspNetCore.Authentication.JwtBearer"
+        />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+        <PackageReference Include="Swashbuckle.AspNetCore" />
+        <PackageReference Include="Hellang.Middleware.ProblemDetails" />
+        <PackageReference Include="Serilog.AspNetCore" />
+        <PackageReference Include="Serilog.Enrichers.ClientInfo" />
+        <PackageReference Include="Serilog.Exceptions" />
+        <PackageReference Include="Microsoft.FeatureManagement.AspNetCore" />
+        <PackageReference Include="Finbuckle.MultiTenant.AspNetCore" />
+        <PackageReference Include="Asp.Versioning.Http" />
+        <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference
+            Include="../Common.WebApi.Application/Common.WebApi.Application.csproj"
+        />
+        <ProjectReference
+            Include="../Common.WebApi.Aspire.ServiceDefaults/Common.WebApi.Aspire.ServiceDefaults.csproj"
+        />
+    </ItemGroup>
+</Project>

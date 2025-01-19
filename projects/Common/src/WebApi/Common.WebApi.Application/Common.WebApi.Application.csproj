@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MediatR" />
+        <PackageReference Include="FluentValidation" />
+        <PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="../../Persistence/Common.Persistence/Common.Persistence.csproj" />
+    </ItemGroup>
+</Project>

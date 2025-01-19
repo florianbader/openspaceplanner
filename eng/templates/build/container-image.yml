@@ -1,0 +1,25 @@
+parameters:
+    - name: imageName
+      type: string
+
+    - name: imageTag
+      type: string
+
+    - name: dockerfilePath
+      type: string
+
+    - name: buildContext
+      type: string
+
+steps:
+    - task: Docker@2
+      inputs:
+          command: 'build'
+          repository: ${{ parameters.imageName }}
+          dockerfile: ${{ parameters.dockerfilePath }}
+          buildContext: ${{ parameters.buildContext }}
+          tags: |
+              latest
+              ${{ coalesce(parameters.imageTag, variables['Build.BuildId']) }}
+      env:
+          DOCKER_BUILDKIT: 1 # Enable BuildKit for Docker for faster builds

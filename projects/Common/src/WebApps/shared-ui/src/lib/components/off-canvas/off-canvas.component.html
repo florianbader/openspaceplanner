@@ -1,0 +1,33 @@
+<ng-template #content let-offCanvas>
+    <div class="offcanvas-header">
+        <h4 class="offcanvas-title">{{ title() }}</h4>
+        <button
+            type="button"
+            class="btn-close"
+            aria-label="Close"
+            (click)="offCanvas.dismiss('Close')"
+        ></button>
+    </div>
+
+    <div class="offcanvas-body">
+        <ng-content></ng-content>
+    </div>
+
+    <div class="offcanvas-footer">
+        <button
+            type="button"
+            class="btn btn-primary me-3"
+            (click)="save.emit()"
+            (click)="offCanvas.dismiss('Save')"
+        >
+            {{ 'save' | translate }}
+        </button>
+        <button
+            type="button"
+            class="btn btn-outline-secondary"
+            (click)="offCanvas.close('Close')"
+        >
+            {{ 'close' | translate }}
+        </button>
+    </div>
+</ng-template>

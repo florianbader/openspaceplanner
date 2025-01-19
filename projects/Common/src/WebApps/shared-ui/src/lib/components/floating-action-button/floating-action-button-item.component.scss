@@ -1,0 +1,23 @@
+::ng-deep .floating-action-button {
+    .dropdown-menu {
+        .dropdown-item {
+            cursor: pointer;
+            margin-top: 1.5rem;
+            text-align: right;
+
+            button {
+                position: relative;
+                right: -1rem;
+                bottom: 0.25rem;
+            }
+        }
+
+        .dropdown-item:active,
+        .dropdown-item:hover,
+        .dropdown-item:focus {
+            background: none;
+            border: none;
+            color: var(--bs-dropdown-link-color);
+        }
+    }
+}

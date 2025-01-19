@@ -1,0 +1,21 @@
+{
+    "close": "Close",
+    "createRoom": "Create Room",
+    "createSession": "Create Session",
+    "createTimeSlot": "Create Time Slot",
+    "createTopic": "Create Topic",
+    "description": "Description",
+    "editRoom": "Edit Room",
+    "editSession": "Edit Session",
+    "editTimeSlot": "Edit Time Slot",
+    "fromTime": "From Time",
+    "home": "Home",
+    "name": "Name",
+    "openSpacePlannerTitle": "Open Space Planner",
+    "room": "Room",
+    "seats": "Seats",
+    "sessions": "Sessions",
+    "timeSlot": "Time Slot",
+    "toTime": "To Time",
+    "unassignedTopics": "Unassigned Topics"
+}

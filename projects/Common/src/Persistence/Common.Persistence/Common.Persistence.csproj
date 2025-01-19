@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" />
+        <PackageReference Include="Finbuckle.MultiTenant.EntityFrameworkCore" />
+        <PackageReference Include="Vogen" />
+        <PackageReference Include="Gridify.EntityFramework" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\Base\Common.Base.csproj" />
+    </ItemGroup>
+</Project>

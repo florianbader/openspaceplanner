@@ -1,0 +1,36 @@
+{
+    "name": "shared-ui",
+    "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "projects/Common/src/WebApps/shared-ui/src",
+    "prefix": "shared",
+    "projectType": "library",
+    "tags": ["scope:shared"],
+    "targets": {
+        "build": {
+            "executor": "@nx/angular:package",
+            "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+            "options": {
+                "project": "projects/Common/src/WebApps/shared-ui/ng-package.json"
+            },
+            "configurations": {
+                "production": {
+                    "tsConfig": "projects/Common/src/WebApps/shared-ui/tsconfig.lib.prod.json"
+                },
+                "development": {
+                    "tsConfig": "projects/Common/src/WebApps/shared-ui/tsconfig.lib.json"
+                }
+            },
+            "defaultConfiguration": "production"
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "projects/Common/src/WebApps/shared-ui/jest.config.ts"
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint"
+        }
+    }
+}

@@ -1,0 +1,31 @@
+<a (click)="createSession()" class="btn btn-primary mb-3" role="button"
+    >Create session</a
+>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    @for (session of sessions(); track session.id) {
+        <div class="col">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">{{ session.name }}</h5>
+                    <a
+                        [routerLink]="['/sessions', session.id]"
+                        class="btn btn-primary stretched-link"
+                        >Go to session</a
+                    >
+                </div>
+            </div>
+        </div>
+    }
+
+    @let currentPageResult = pageResult();
+
+    @if (currentPageResult != null && currentPageResult.totalPages > 1) {
+        <ngb-pagination
+            [page]="currentPageResult.currentPage"
+            [pageSize]="currentPageResult.size"
+            [collectionSize]="currentPageResult.totalItems"
+            (pageChange)="pageChange($event)"
+        />
+    }
+</div>

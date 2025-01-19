@@ -1,0 +1,20 @@
+.session-table {
+    margin-top: 1rem;
+
+    td,
+    th {
+        border-width: 0 1px 1px 0;
+    }
+
+    .table-cell {
+        min-width: 15rem;
+    }
+
+    tbody .table-row {
+        height: 8rem;
+    }
+}
+
+.topics-unassigned {
+    height: 10rem;
+}

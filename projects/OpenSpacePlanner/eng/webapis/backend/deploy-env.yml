@@ -1,0 +1,25 @@
+parameters:
+    - name: environment
+      type: object
+      default:
+          key: dev
+          name: Development
+
+    - name: location
+      type: object
+      default:
+          key: weu
+          name: West Europe
+
+stages:
+    - stage: Deployment
+      displayName: 'Deploy to ${{ parameters.environment.name }}'
+      jobs:
+          - template: /eng/templates/deploy/container-registry.yml
+            parameters:
+                ${{ if eq(parameters.environment.key, 'dev') }}:
+                    pullRegistry: ${{ format('crosp{0}{1}development.azurecr.io', parameters.environment.key, parameters.location.key) }}
+                ${{ else }}:
+                    pullRegistry: ${{ format('crosp{0}{1}apps.azurecr.io', parameters.environment.key, parameters.location.key) }}
+                pushRegistry: ${{ format('crosp{0}{1}{2}.azurecr.io', parameters.environment.key, parameters.location.key) }}
+                imageName: 'backend-api'
