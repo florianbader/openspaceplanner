@@ -24,9 +24,10 @@ builder.Host.UseSerilog();
 builder.AddServiceDefaults();
 
 builder.Services.AddEntityFramework<TenantApplicationDbContext>(builder.Configuration);
+#if DEBUG
 builder.EnrichSqlServerDbContext<TenantApplicationDbContext>();
+#endif
 
-// Add framework services
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddResponseCompression(options => options.EnableForHttps = true);
 builder.Services.AddDistributedMemoryCache();
@@ -48,7 +49,6 @@ var app = builder.Build();
 app.UseOpenApi();
 app.UseSerilogRequestLogging();
 
-app.UseHttpsRedirection();
 app.UseCustomCors();
 app.UseProblemDetails();
 app.UseStaticFiles();

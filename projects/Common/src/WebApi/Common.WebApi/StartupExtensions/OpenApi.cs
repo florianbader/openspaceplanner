@@ -36,7 +36,7 @@ public static class OpenApi
         serviceCollection
             .AddSwaggerGen(options =>
             {
-                options.SchemaFilter<VogenSchemaFilterInRioScaffoldingOpenSpacePlannerCommonWebApi>();
+                options.SchemaFilter<VogenSchemaFilterInRioScaffolding_OpenSpacePlanner_Common_WebApi>();
                 options.CustomSchemaIds(SchemaIdStrategy);
 
                 options.CustomOperationIds(CustomOperationIds);

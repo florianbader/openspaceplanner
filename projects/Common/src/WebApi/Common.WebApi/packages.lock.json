@@ -1215,7 +1215,7 @@
                     "Microsoft.EntityFrameworkCore.SqlServer": "[9.0.0, )",
                     "Microsoft.EntityFrameworkCore.Tools": "[9.0.0, )",
                     "RioScaffolding.OpenSpacePlanner.Common.Base": "[1.0.0, )",
-                    "Vogen": "[5.0.6, )"
+                    "Vogen": "[8.0.2, )"
                 }
             },
             "RioScaffolding.OpenSpacePlanner.Common.WebApi.Application": {
@@ -1418,9 +1418,9 @@
             },
             "Vogen": {
                 "type": "CentralTransitive",
-                "requested": "[5.0.6, )",
-                "resolved": "5.0.6",
-                "contentHash": "yRBazqc3EF5+9qCvq5WHHY3jz23fativnuQo/j394j3p7lW0PcXwMcr0FxvOzNvz6I3tIEJKHnx2MNvBzKK16A=="
+                "requested": "[8.0.2, )",
+                "resolved": "8.0.2",
+                "contentHash": "0irt++hrVYJzvaCiiNLZsIu4cf0vQMw5raIwVqJjHp/DTxGyAzRb+aLsFHhqzQWKT0y+uqLKDu9QJfcqTkvZCQ=="
             }
         }
     }

@@ -1,8 +1,9 @@
 import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActionType } from '@ngxs/store';
-import { ComponentBase, OffCanvasComponent } from '@rio-scaffolding/shared-ui';
 import { identity } from 'rxjs';
+import { ComponentBase } from '../component.base';
+import { OffCanvasComponent } from './off-canvas.component';
 
 @Component({
     template: '',

@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    backendApiBaseUrl: 'https://localhost:5001',
+    backendApiBaseUrl: '${APP_API_URL}',
     defaultTenant: 'default',
 };

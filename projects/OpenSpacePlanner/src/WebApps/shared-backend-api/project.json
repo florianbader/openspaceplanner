@@ -10,15 +10,14 @@
             "executor": "@nx/angular:package",
             "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
             "options": {
-                "project": "projects/OpenSpacePlanner/src/WebApps/shared-backend-api/ng-package.json"
+                "project": "projects/OpenSpacePlanner/src/WebApps/shared-backend-api/ng-package.json",
+                "tsConfig": "projects/OpenSpacePlanner/src/WebApps/shared-backend-api/tsconfig.lib.json"
             },
             "configurations": {
                 "production": {
                     "tsConfig": "projects/OpenSpacePlanner/src/WebApps/shared-backend-api/tsconfig.lib.prod.json"
                 },
-                "development": {
-                    "tsConfig": "projects/OpenSpacePlanner/src/WebApps/shared-backend-api/tsconfig.lib.json"
-                }
+                "development": {}
             },
             "defaultConfiguration": "production"
         },

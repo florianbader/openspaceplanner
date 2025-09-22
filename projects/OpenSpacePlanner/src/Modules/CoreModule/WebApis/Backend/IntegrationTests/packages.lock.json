@@ -2084,7 +2084,7 @@
                     "Microsoft.EntityFrameworkCore.SqlServer": "[9.0.0, )",
                     "Microsoft.EntityFrameworkCore.Tools": "[9.0.0, )",
                     "RioScaffolding.OpenSpacePlanner.Common.Base": "[1.0.0, )",
-                    "Vogen": "[5.0.6, )"
+                    "Vogen": "[8.0.2, )"
                 }
             },
             "RioScaffolding.OpenSpacePlanner.Common.Testing": {
@@ -2121,9 +2121,7 @@
                     "Testcontainers.MsSql": "[4.0.0, )",
                     "coverlet.collector": "[6.0.2, )",
                     "coverlet.msbuild": "[6.0.2, )",
-                    "xunit.runner.visualstudio": "[3.0.0-pre.49, )",
-                    "xunit.v3": "[0.7.0-pre.15, )",
-                    "xunit.v3.runner.console": "[0.7.0-pre.15, )"
+                    "xunit.v3": "[0.7.0-pre.15, )"
                 }
             },
             "RioScaffolding.OpenSpacePlanner.Common.Testing.WebApi": {
@@ -2140,13 +2138,10 @@
                     "Microsoft.NET.Test.Sdk": "[17.12.0, )",
                     "MockQueryable.NSubstitute": "[7.0.3, )",
                     "NSubstitute": "[5.3.0, )",
-                    "RioScaffolding.OpenSpacePlanner.Common.Testing": "[1.0.0, )",
                     "RioScaffolding.OpenSpacePlanner.Common.Testing.Persistence": "[1.0.0, )",
                     "coverlet.collector": "[6.0.2, )",
                     "coverlet.msbuild": "[6.0.2, )",
-                    "xunit.runner.visualstudio": "[3.0.0-pre.49, )",
-                    "xunit.v3": "[0.7.0-pre.15, )",
-                    "xunit.v3.runner.console": "[0.7.0-pre.15, )"
+                    "xunit.v3": "[0.7.0-pre.15, )"
                 }
             },
             "RioScaffolding.OpenSpacePlanner.Common.WebApi": {
@@ -2585,9 +2580,9 @@
             },
             "Vogen": {
                 "type": "CentralTransitive",
-                "requested": "[5.0.6, )",
-                "resolved": "5.0.6",
-                "contentHash": "yRBazqc3EF5+9qCvq5WHHY3jz23fativnuQo/j394j3p7lW0PcXwMcr0FxvOzNvz6I3tIEJKHnx2MNvBzKK16A=="
+                "requested": "[8.0.2, )",
+                "resolved": "8.0.2",
+                "contentHash": "0irt++hrVYJzvaCiiNLZsIu4cf0vQMw5raIwVqJjHp/DTxGyAzRb+aLsFHhqzQWKT0y+uqLKDu9QJfcqTkvZCQ=="
             }
         }
     }

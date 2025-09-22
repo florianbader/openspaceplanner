@@ -25,6 +25,11 @@ public static class MultiTenancy
 
     public class MultiTenantMiddleware(RequestDelegate next)
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage(
+            "Style",
+            "IDE0031:Use null propagation",
+            Justification = "Not applicable here"
+        )]
         public async Task InvokeAsync(HttpContext context)
         {
             context.RequestServices.GetRequiredService<IMultiTenantContextAccessor>();

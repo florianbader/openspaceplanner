@@ -19,6 +19,7 @@ public static class EntityFramework
             configure
                 .UseSqlServer(configuration.GetConnectionString("database"))
                 .AddInterceptors(new BaseEntityInterceptor());
+            Console.WriteLine($"Connection String: {configuration.GetConnectionString("database")}");
 
             // track all entities when they are received from the database
             // make sure to track no changes if entities are only queried but not edited

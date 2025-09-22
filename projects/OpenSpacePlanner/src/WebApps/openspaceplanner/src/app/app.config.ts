@@ -2,7 +2,7 @@ import { provideHttpClient } from '@angular/common/http';
 import {
     ApplicationConfig,
     importProvidersFrom,
-    provideExperimentalZonelessChangeDetection,
+    provideZonelessChangeDetection,
 } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -29,7 +29,7 @@ import { provideTranslation } from './app.translation';
 
 export const appConfig: ApplicationConfig = {
     providers: [
-        provideExperimentalZonelessChangeDetection(),
+        provideZonelessChangeDetection(),
         provideRouter(appRoutes, withComponentInputBinding()),
         provideHttpClient(),
         provideStore(

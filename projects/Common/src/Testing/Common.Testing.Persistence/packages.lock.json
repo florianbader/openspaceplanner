@@ -165,12 +165,6 @@
                     "Testcontainers": "4.0.0"
                 }
             },
-            "xunit.runner.visualstudio": {
-                "type": "Direct",
-                "requested": "[3.0.0-pre.49, )",
-                "resolved": "3.0.0-pre.49",
-                "contentHash": "i084XWbNviDh82dkDW6QwOzo1MMXgtL/kUt4X0fi/f05kYUCMjAfUPLdZ2OCY8rr20cFB86q7bY7VY5Tj1gp8Q=="
-            },
             "xunit.v3": {
                 "type": "Direct",
                 "requested": "[0.7.0-pre.15, )",
@@ -181,12 +175,6 @@
                     "xunit.v3.assert": "[0.7.0-pre.15]",
                     "xunit.v3.core": "[0.7.0-pre.15]"
                 }
-            },
-            "xunit.v3.runner.console": {
-                "type": "Direct",
-                "requested": "[0.7.0-pre.15, )",
-                "resolved": "0.7.0-pre.15",
-                "contentHash": "NmERzLRey8Thvg74KASXjx6J5XPqxgaQTvfjO4ZX8Z50tas0sJYon8NWoNlMnzc/WJD31LQLusSJhsBpm4numQ=="
             },
             "Azure.Core": {
                 "type": "Transitive",
