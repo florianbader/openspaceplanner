@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
 using RioScaffolding.OpenSpacePlanner.Common.Extensions;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
@@ -18,22 +17,14 @@ namespace RioScaffolding.OpenSpacePlanner.Common.WebApi.StartupExtensions;
 public static class OpenApi
 {
     public static IApplicationBuilder UseOpenApi(this IApplicationBuilder builder) =>
-        builder
-            .UseSwagger()
-            .UseSwaggerUI(options =>
-            {
-                options.EnableTryItOutByDefault();
-                options.DisplayRequestDuration();
-                options.EnableFilter();
-
-                builder.AddApiVersioning(options);
-            });
+        builder.MapSwagger("/openapi/{documentName}.json").MapScalarApiReference();
 
     public static IServiceCollection AddSwashbuckleOpenApi(
         this IServiceCollection serviceCollection,
         Action<SwaggerGenOptions>? configure = null
     ) =>
         serviceCollection
+            .AddEndpointsApiExplorer()
             .AddSwaggerGen(options =>
             {
                 options.SchemaFilter<VogenSchemaFilterInRioScaffoldingOpenSpacePlannerCommonWebApi>();

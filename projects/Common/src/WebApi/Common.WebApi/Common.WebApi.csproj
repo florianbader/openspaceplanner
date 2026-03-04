@@ -13,6 +13,8 @@
         <PackageReference Include="Finbuckle.MultiTenant.AspNetCore" />
         <PackageReference Include="Asp.Versioning.Http" />
         <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" />
+        <PackageReference Include="Scalar.AspNetCore" />
+        <PackageReference Include="Scalar.AspNetCore.Swashbuckle" />
     </ItemGroup>
 
     <ItemGroup>

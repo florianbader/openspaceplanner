@@ -61,5 +61,7 @@
         <PackageVersion Include="xunit.v3.runner.console" Version="0.7.0-pre.15" />
         <PackageVersion Include="xunit.runner.visualstudio" Version="3.0.0-pre.49" />
         <PackageVersion Include="xunit.v3" Version="0.7.0-pre.15" />
+        <PackageVersion Include="Scalar.AspNetCore" Version="2.12.53" />
+        <PackageVersion Include="Scalar.AspNetCore.Swashbuckle" Version="2.12.53" />
     </ItemGroup>
 </Project>
