@@ -153,12 +153,6 @@
                     "StyleCop.Analyzers.Unstable": "1.2.0.556"
                 }
             },
-            "xunit.runner.visualstudio": {
-                "type": "Direct",
-                "requested": "[3.0.0-pre.49, )",
-                "resolved": "3.0.0-pre.49",
-                "contentHash": "i084XWbNviDh82dkDW6QwOzo1MMXgtL/kUt4X0fi/f05kYUCMjAfUPLdZ2OCY8rr20cFB86q7bY7VY5Tj1gp8Q=="
-            },
             "xunit.v3": {
                 "type": "Direct",
                 "requested": "[0.7.0-pre.15, )",
@@ -169,12 +163,6 @@
                     "xunit.v3.assert": "[0.7.0-pre.15]",
                     "xunit.v3.core": "[0.7.0-pre.15]"
                 }
-            },
-            "xunit.v3.runner.console": {
-                "type": "Direct",
-                "requested": "[0.7.0-pre.15, )",
-                "resolved": "0.7.0-pre.15",
-                "contentHash": "NmERzLRey8Thvg74KASXjx6J5XPqxgaQTvfjO4ZX8Z50tas0sJYon8NWoNlMnzc/WJD31LQLusSJhsBpm4numQ=="
             },
             "Azure.Core": {
                 "type": "Transitive",
@@ -1526,9 +1514,7 @@
                     "Testcontainers.MsSql": "[4.0.0, )",
                     "coverlet.collector": "[6.0.2, )",
                     "coverlet.msbuild": "[6.0.2, )",
-                    "xunit.runner.visualstudio": "[3.0.0-pre.49, )",
-                    "xunit.v3": "[0.7.0-pre.15, )",
-                    "xunit.v3.runner.console": "[0.7.0-pre.15, )"
+                    "xunit.v3": "[0.7.0-pre.15, )"
                 }
             },
             "Azure.Identity": {
